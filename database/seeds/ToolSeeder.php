@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\Tool;
+use App\Models\Tool;
 use Illuminate\Database\Seeder;
 
 class ToolSeeder extends Seeder

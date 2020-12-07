@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Model\Tag;
+use App\Http\Requests\TagCreateRequest;
+use App\Http\Requests\TagUpdateRequest;
+use App\Models\Tag;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -39,10 +41,10 @@ class TagController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\TagCreateRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TagCreateRequest $request)
     {
         try {
             $tag = $this->tags->create($request->only('name', 'label'));
@@ -80,11 +82,11 @@ class TagController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\TagUpdateRequest  $request
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(TagUpdateRequest $request, Tag $tag)
     {
         try {
             $tag->update($request->all());

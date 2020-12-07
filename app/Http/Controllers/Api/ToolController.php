@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Model\Tag;
-use App\Model\Tool;
+use App\Models\Tag;
+use App\Models\Tool;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -33,13 +33,9 @@ class ToolController extends Controller
         $tools = [];
         if (!is_null($tag)) {
             $tools = $tag->tools;
-
-
         }
-
         foreach ($tools as $tool) {
             $tool->tags = $tool->tags()->get()->pluck('label')->toArray();
-
         }
 
         return response()->json($tools);

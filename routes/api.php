@@ -14,12 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespace' => 'Api', 'middleware' => 'api'], function () {
+// Route::auth();
+
+Route::group(['namespace' => 'Api', 'middleware' => 'auth:api'], function () {
     Route::resource('tools', 'ToolController');
     Route::get('tools/getByTag/{tag}', 'ToolController@getByTag');
     Route::resource('tags', 'TagController');
 });
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,11 +14,6 @@ class Tag extends Model
     public function tools()
     {
         return $this->belongsToMany(Tool::class)->withTimestamps();
-    }
-
-    public function toolsWithoutTimestamps()
-    {
-        return $this->belongsToMany(Tool::class);
     }
 
 }
